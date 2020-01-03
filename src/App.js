@@ -1,26 +1,34 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import {
+  BrowserRouter as Router,
+  Route, Switch
+} from 'react-router-dom'
+import HeaderSection from './HeaderSection'
+import FooterSection from './FooterSection'
+import TopPage from './TopPage'
+import VacancyPage from './VacancyPage'
+import NewsPage from './NewsPage'
+import InquiryPage from './InquiryPage'
+import PrivacyPolicyPage from './PrivacyPolicyPage'
+import TermsOfUsePage from './TermsOfUsePage'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+const App = () => (
+  <Router>
+    <div style={{margin: 20}}>
+      <HeaderSection />
+      <div>
+        <Switch>
+          <Route path='/vacancy' component={VacancyPage} />
+          <Route path='/news' component={NewsPage} />
+          <Route path='/inquiry' component={InquiryPage} />
+          <Route path='/privacyPolicy' component={PrivacyPolicyPage} />
+          <Route path='/termsOfUse' component={TermsOfUsePage} />
+          <Route component={TopPage} />
+        </Switch>
+      </div>
+      <FooterSection />
     </div>
-  );
-}
+  </Router>
+)
 
-export default App;
+export default App
